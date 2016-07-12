@@ -25,13 +25,13 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors' 
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'xolox/vim-misc'
 "Plugin 'tomasr/molokai'
 "Plugin 'mbbill/echofunc'
+"Plugin 'Shougo/vimshell.vim'
 "Plugin 'vim-scripts/grep.vim'
 "Plugin 'WolfgangMehner/c.vim'
 "Plugin 'tomtom/quickfixsigns_vim'
@@ -245,10 +245,14 @@ Plugin 'AutoComplPop'
  endfunction
 
  " 更新vimrc
- "nmap <Leader>re :source $HOME/.vimrc<CR>
+ nmap <Leader>re :source $HOME/.vimrc<CR>
  " 编辑_vimrc
  nmap <Leader>ev :e $HOME/.vimrc<CR>
 
+ noremap <silent> <expr> j (v:count == 0 ? 'gj':'j')
+ noremap <silent> <expr> k (v:count == 0 ? 'gk':'k')
+
+ syntax enable
  "设置（软）制表符宽度为4
  set tabstop=4 
  set et
@@ -260,9 +264,10 @@ Plugin 'AutoComplPop'
  "set cindent
  "开启行号显示
  set number
+ "使用相对行号
+ set relativenumber
  
  "colorschem molokai
  colorschem pyte
  "colorschem proton
  "colorscheme delek
-
