@@ -25,9 +25,9 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors' 
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'tpope/vim-fugitive'
+"Plugin 'Shougo/unite.vim'
+"Plugin 'Shougo/vimproc.vim'
+"Plugin 'tpope/vim-fugitive'
 "Plugin 'xolox/vim-misc'
 "Plugin 'tomasr/molokai'
 "Plugin 'mbbill/echofunc'
@@ -135,6 +135,15 @@ Plugin 'AutoComplPop'
 "nmap <Leader>fc <Leader><Leader>f
 "nmap <Leader>wd <Leader><Leader>w
 
+"syntastic
+ set statusline+=%#warningmsg#
+ set statusline+=%{SyntasticStatuslineFlag()}
+ set statusline+=%*
+ let g:syntastic_always_populate_loc_list = 1
+ let g:syntastic_auto_loc_list = 0
+ let g:syntastic_check_on_open = 0
+ let g:syntastic_check_on_wq = 0
+
 "ctrlsf
  let g:ctrlsf_ackprg = 'ag' 
  let g:ctrlsf_position = 'bottom'
@@ -181,7 +190,9 @@ Plugin 'AutoComplPop'
 "cscope
  "set autochdir
  "cscope add /home/lcp/program/ti/lib
- cscope add .
+ if has("cscope.out")
+    cscope add .
+ endif
  nnoremap <silent> <F12> :!cscope -Rbq <CR>:cscope reset<CR>
  nnoremap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>
  nnoremap <Leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>
@@ -266,6 +277,8 @@ Plugin 'AutoComplPop'
  set number
  "使用相对行号
  set relativenumber
+ "光标离窗口上下边界5行时窗口自动滚动
+  set scrolloff=5
  
  "colorschem molokai
  colorschem pyte
